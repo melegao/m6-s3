@@ -1,0 +1,32 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 110px;
+    background-color: gray;
+    
+}
+
+h1{
+    font-size: 30px;
+}
+
+input{
+    padding: 7px 5px;
+}
+
+.header-search{
+    display: flex;
+    gap: 2px;
+}
+
+/* @media (max-width: 770px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0px;
+        gap: 15px;
+        background-color: red;
+    }
+} */

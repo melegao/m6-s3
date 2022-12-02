@@ -1,0 +1,29 @@
+.container-new-customer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container-new-customer h3{
+    align-self: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form-new-customer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.form-new-customer input{
+    padding: 10px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.error-message{
+    font-size: 13px;
+    color: rgb(226, 6, 6);
+}
