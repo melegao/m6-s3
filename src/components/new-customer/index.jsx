@@ -4,13 +4,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from "react";
 import { CustomersContext } from '../../providers/customers';
-import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
+import { toast } from "react-toastify";
 
-function NewCustomer() {
 
-  
+function NewCustomer({handleClose}) {
 
-    const { setAllCustomers, allCustomers } = useContext(CustomersContext)
+    const token = localStorage.getItem("token");
+
+    const { updateCustomerList } = useContext(CustomersContext)
+
 
     const formSchema = yup.object().shape({
         name: yup
@@ -23,7 +26,8 @@ function NewCustomer() {
             .email('E-mail inválido'),
         phone: yup
             .string()
-            .required('Telefone obrigatório')
+            .required("Telefone obrigatório")
+            .matches("^([0-9]{11})$", "Ex.: 11966554433"),
     })
 
     const { 
@@ -35,21 +39,34 @@ function NewCustomer() {
       })
 
     const onSubmit = (data) => {
-        console.log(data)
-        console.log(allCustomers)
+        axios
+        .post("http://localhost:4000/users/contact", data, {
+            headers: {
+                Authorization: token,
+              },
+        })
+        .then((res) => handleSuccess())
+        .catch((err) => console.log(err));
+
         
         
-        const newData = {
-            id: uuidv4(),
-            name: data.name,
-            email: data.email,
-            phone: data.phone
-        }
-        
-        const updatedList = [...allCustomers, newData]
-        
-        setAllCustomers(updatedList)
-        
+    }
+
+    const handleSuccess = () => {
+        toast.success("Cadastrado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          setTimeout(() => {
+            updateCustomerList()
+            handleClose();
+          }, 1500);
     }
 
 

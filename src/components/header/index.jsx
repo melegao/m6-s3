@@ -1,14 +1,21 @@
 import './style.css'
+import { useNavigate } from "react-router-dom";
 
 function Header () {
+
+    const navigate = useNavigate();
+
+    const logoutUser = () => {
+        localStorage.clear();
+        navigate("/");
+    }
 
 
     return (
         <div className='header'>
             <h1>Kenzie CRM</h1>
             <div className='header-search'>
-                <input placeholder='Faça uma pesquisa'/>
-                <button>Pesquisar</button>
+                <button onClick={() => logoutUser()}>Logout</button>
             </div>
         </div>
     )

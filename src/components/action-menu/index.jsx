@@ -33,7 +33,7 @@ export default function ActionMenu() {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <NewCustomer />
+                <NewCustomer handleClose={handleClose}/>
             </Box>
         </Modal>
     </div>
