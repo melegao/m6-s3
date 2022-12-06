@@ -90,8 +90,7 @@ function Register () {
         <div className='register-container'>
 
             <form className='form-register' onSubmit={handleSubmit(onSubmit)}>
-                <h2>Kenzie CRM</h2>
-                <p>Criar conta</p>
+                <h2 className='form-register-h2'>Kenzie CRM</h2>
                 <input {...register('name')} placeholder='Nome'/>
                 {errors.name && <p className='error-message'>{errors.name.message}</p>}
                 <input {...register('phone')} placeholder='Telefone'/>
@@ -105,7 +104,7 @@ function Register () {
                 <button type='submit'>Cadastrar</button>
             </form>
             <div>
-                <p onClick={() => navigate('/')}>Fazer login</p>
+                <p onClick={() => navigate('/')} className="btn-register">Fazer login</p>
             </div>
         
         </div>

@@ -7,10 +7,41 @@
     align-items: center;
     height: 100vh;
     gap: 25px;
+    background-color: #2b2c34;
+    color: #fffffe;
 }
 
 .form-register{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.form-register input{
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.form-register-h2{
+    font-size: 25px;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.form-register button{
+    background-color: #6246ea;
+    border: 1px solid #6246ea;
+    border-radius: 7px;
+    padding: 8px 15px;
+    color: #fffffe;
+}
+
+.form-register button:hover{
+    background-color: #110647;
+    border: 1px solid #110647;
+}
+
+.btn-register:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }

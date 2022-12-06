@@ -15,7 +15,7 @@ function Header () {
         <div className='header'>
             <h1>Kenzie CRM</h1>
             <div className='header-search'>
-                <button onClick={() => logoutUser()}>Logout</button>
+                <button onClick={() => logoutUser()} className="btn-logout">Logout</button>
             </div>
         </div>
     )

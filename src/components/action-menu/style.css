@@ -7,5 +7,22 @@
 }
 
 .btn-new-customer{
-    padding: 5px 10px;
+    background-color: #6246ea;
+    border: 1px solid #6246ea;
+    border-radius: 7px;
+    padding: 8px 15px;
+    color: #fffffe;
+}
+
+.btn-new-customer:hover{
+    background-color: #110647;
+    border: 1px solid #110647;
+}
+
+.client-name{
+    font-size: 17;
+}
+
+.client-name span{
+    font-weight: 500;
 }

@@ -2,7 +2,8 @@ import './style.css'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import NewCustomer from '../new-customer';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CustomersContext } from '../../providers/customers';
 
 const style = {
   position: 'absolute',
@@ -22,9 +23,13 @@ export default function ActionMenu() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const { allCustomers } = useContext(CustomersContext)
+
+  // const name = localStorage.getItem("name");
+
   return (
     <div className='action-menu'>
-        <h3>Clientes</h3>
+        <h3 className='client-name'>Olá, <span>{allCustomers?.name}</span>!</h3>
         <button onClick={handleOpen} className='btn-new-customer'>Novo Cliente</button>
         <Modal
             open={open}

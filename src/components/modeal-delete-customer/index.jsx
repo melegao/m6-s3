@@ -12,7 +12,7 @@ const ModalDeleteCustomer = ({customer, handleClose}) => {
 
     const token = localStorage.getItem("token");
 
-    const { updateCustomerList } = useContext(CustomersContext)
+    const { setUpdateList, updateList } = useContext(CustomersContext)
 
     const deleteCustomer = (id) =>{
 
@@ -22,7 +22,10 @@ const ModalDeleteCustomer = ({customer, handleClose}) => {
             Authorization: token,
             },
         })
-        .then((response) => successDelete())
+        .then((response) => {
+            setUpdateList(!updateList)
+            successDelete()
+        })
         .catch((err) => failedDelete());
     }
 
@@ -38,7 +41,6 @@ const ModalDeleteCustomer = ({customer, handleClose}) => {
           });
 
           setTimeout(() => {
-            updateCustomerList()
             handleClose();
           }, 1000);
 

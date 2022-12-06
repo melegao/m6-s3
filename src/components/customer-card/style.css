@@ -1,7 +1,6 @@
 
 
 .container-customer-card{
-    background-color: yellow;
     margin-top: 15px;
 }
 
@@ -9,8 +8,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
-    padding: 5px;
+    padding: 15px;
+    background-color: #d1d1e9;
+    border: 2px solid #d1d1e9;
+    border-radius: 8px;
+    color: #2b2c34;
+    font-size: 17px;
+}
+
+.customer-name{
+    font-weight: 500;
 }
 
 .content-customer-card{
@@ -21,7 +28,20 @@
 
 .btns-customer-card{
     display: flex;
-    gap: 4px;
+    gap: 10px;
+}
+
+.btn-action{
+    background-color: #d1d1e9;
+    border: 1px solid #d1d1e9;
+    border-radius: 5px;
+    padding: 3px 5px;
+    color: #6246ea;
+    font-size: 18px;
+}
+
+.btn-action:hover{
+    color: #110647;
 }
 
 .container-full-content{

@@ -4,12 +4,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 25px 110px;
-    background-color: gray;
+    background-color: #2b2c34;
     
 }
 
 h1{
     font-size: 30px;
+    color: #fffffe;
 }
 
 input{
@@ -21,12 +22,15 @@ input{
     gap: 2px;
 }
 
-/* @media (max-width: 770px) {
-    .header{
-        display: flex;
-        flex-direction: column;
-        padding: 15px 0px;
-        gap: 15px;
-        background-color: red;
-    }
-} */
+.btn-logout{
+    background-color: #6246ea;
+    border: 1px solid #6246ea;
+    border-radius: 7px;
+    padding: 8px 15px;
+    color: #fffffe;
+}
+
+.btn-logout:hover{
+    background-color: #110647;
+    border: 1px solid #110647;
+}

@@ -1,18 +1,18 @@
-import './style.css'
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useContext } from "react";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useContext } from 'react';
 import { CustomersContext } from '../../providers/customers';
-import axios from "axios";
-import { toast } from "react-toastify";
 
 
-function NewCustomer({handleClose}) {
+
+const UpdateCustomer = ({customer, handleCloseEdit}) => {
 
     const token = localStorage.getItem("token");
 
-    const { setUpdateList, updateList } = useContext(CustomersContext)
+    const { updateList, setUpdateList } = useContext(CustomersContext)
 
     const formSchema = yup.object().shape({
         name: yup
@@ -29,6 +29,7 @@ function NewCustomer({handleClose}) {
             .matches("^([0-9]{11})$", "Ex.: 11966554433"),
     })
 
+
     const { 
         register, 
         handleSubmit,
@@ -38,8 +39,10 @@ function NewCustomer({handleClose}) {
       })
 
     const onSubmit = (data) => {
+        console.log(data)
+
         axios
-        .post("http://localhost:4000/users/contact", data, {
+        .patch(`http://localhost:4000/users/contact/${customer.id}`, data, {
             headers: {
                 Authorization: token,
               },
@@ -63,25 +66,24 @@ function NewCustomer({handleClose}) {
           });
 
           setTimeout(() => {
-            handleClose();
+            handleCloseEdit();
           }, 1500);
     }
 
-
-    return (
+    return(
         <div className='container-new-customer'>
-            <h3>Novo Cliente</h3>
+            <h3>Editar Cliente</h3>
             <form className='form-new-customer' onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register('name')} placeholder="Nome Completo*"/>
+                <input type="text" {...register('name')} placeholder="Nome Completo*" defaultValue={customer.name}/>
                 {errors.name && <p className='error-message'>{errors.name.message}</p>}
-                <input type="text" {...register('email')} placeholder="E-mail*"/>
+                <input type="text" {...register('email')} placeholder="E-mail*" defaultValue={customer.email}/>
                 {errors.email && <p className='error-message'>{errors.email.message}</p>}
-                <input type="text" {...register('phone')} placeholder="Telefone*"/>
+                <input type="text" {...register('phone')} placeholder="Telefone*" defaultValue={customer.phone}/>
                 {errors.phone && <p className='error-message'>{errors.phone.message}</p>}
-                <button type='submit' className='btn-new-customer'>Cadastrar</button>
+                <button type='submit' className='btn-new-customer'>Editar</button>
             </form>
         </div>
     )
 }
 
-export default NewCustomer
+export default UpdateCustomer

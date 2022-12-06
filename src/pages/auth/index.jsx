@@ -38,7 +38,7 @@ function Auth () {
 
         axios
         .post("http://localhost:4000/users/login", data)
-        .then((res) => loginSuccess(res.data.token))
+        .then((res) => loginSuccess(res))
         .catch((err) => loginFailed());
     }
 
@@ -53,12 +53,12 @@ function Auth () {
             draggable: true,
             progress: undefined,
           });
-
-        localStorage.setItem("token", data)
-        
+        console.log(data)
+        localStorage.setItem("token", data.data.token)
+        updateCustomerList()
         setTimeout(() => {
             navigate("/home");
-            updateCustomerList()
+            
           }, 2000);
     }
 
@@ -80,8 +80,7 @@ function Auth () {
         <div className='auth-container'>
 
             <form className='form-login' onSubmit={handleSubmit(onSubmit)}>
-                <h2>Kenzie CRM</h2>
-                <p>Acesse sua conta</p>
+                <h2 className='form-login-h2'>Kenzie CRM</h2>
 
                 <input {...register('email')} placeholder='E-mail'/>
                 {errors.email && <p className='error-message'>{errors.email.message}</p>}
@@ -90,7 +89,7 @@ function Auth () {
                 <button type='submit'>Entrar</button>
             </form>
             <div>
-                <p onClick={() => navigate('/register')}>Criar conta</p>
+                <p onClick={() => navigate('/register')} className='btn-register'>Criar conta</p>
             </div>
         
         </div>
